@@ -1,86 +1,169 @@
-// Create an object that has strings 
-// for upperCase and lowerCase letters,
-// symbols and numbers
-const types = {
-    upperCase: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
-    lowerCase: "abcdefghijklmnopqrstuvwxyz",
-    numbers: "0123456789",
-    symbols: "!@#$%^&*()_+~\`|}{[]:;?><,./-="
+function generatePassword() {
+  const passwordLength = document.getElementById("passwordLength").value;
+  const includeUppercase = document.getElementById('includeUppercase').checked;
+  const includeLowercase = document.getElementById('includeLowercase').checked;
+  const includeNumbers = document.getElementById('includeNumbers').checked;
+  const includeSymbols = document.getElementById('includeSymbols').checked;
+  const includeCurrency = document.getElementById('includeCurrency').checked;
+
+  const uppercaseChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  const lowercaseChars = 'abcdefghijklmnopqrstuvwxyz';
+  const numberChars = '0123456789';
+  const symbolChars = '!@#$%^&*()_-+=<>?';
+  const currencyChars = '€£$¥';
+
+  let allChars = '';
+  let password = '';
+
+  if (includeUppercase) allChars += uppercaseChars;
+  if (includeLowercase) allChars += lowercaseChars;
+  if (includeNumbers) allChars += numberChars;
+  if (includeSymbols) allChars += symbolChars;
+  if (includeCurrency) allChars += currencyChars;
+
+  for (let i = 0; i < passwordLength; i++) {
+      const randomIndex = Math.floor(Math.random() * allChars.length);
+      password += allChars.charAt(randomIndex);
   }
 
-//  One of these types will be randomly selected to match the set password length
-//  We have functions to select each one of these types
-//  All these functions will be stored in an array, getType
-  const getType = [
+  document.getElementById('passwordOutput').innerHTML = password;
+  console.log(password);
+}
 
-    // Function to randomly select an uppercase letters
-    function upperCase() {
-      return types.upperCase[Math.floor(Math.random() * types.upperCase.length)];
-    },
 
-    // Function to randomly select an lowercase letters
-    function lowerCase() {
-      return types.lowerCase[Math.floor(Math.random() * types.lowerCase.length)];
-    },
 
-    // Function to randomly select a number
-    function numbers() {
-      return types.numbers[Math.floor(Math.random() * types.numbers.length)];
-    },
 
-    // Function to randomly select a symbol
-    function symbols() {
-      return types.symbols[Math.floor(Math.random() * types.symbols.length)];
-    }
-  ];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// // Create an object that has strings 
+// // for upperCase and lowerCase letters,
+// // symbols and numbers
+
+// function passgen(){
+
+
+// const types = {
+//     upperCase: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+//     lowerCase: "abcdefghijklmnopqrstuvwxyz",
+//     numbers: "0123456789",
+//     symbols: "!@#$%^&*()_+~\`|}{[]:;?><,./-="
+//   }
+
+// //  One of these types will be randomly selected to match the set password length
+// //  We have functions to select each one of these types
+// //  All these functions will be stored in an array, getType
+//   const getType = [
+
+//     // Function to randomly select an uppercase letters
+//     function upperCase() {
+//       return types.upperCase[Math.floor(Math.random() * types.upperCase.length)];
+//     },
+
+//     // Function to randomly select an lowercase letters
+//     function lowerCase() {
+//       return types.lowerCase[Math.floor(Math.random() * types.lowerCase.length)];
+//     },
+
+//     // Function to randomly select a number
+//     function numbers() {
+//       return types.numbers[Math.floor(Math.random() * types.numbers.length)];
+//     },
+
+//     // Function to randomly select a symbol
+//     function symbols() {
+//       return types.symbols[Math.floor(Math.random() * types.symbols.length)];
+//     }
+//   ];
   
-  function generatePassword() 
-  {
-    // The following variables can access their respective HTML elements
-    // The checked attribute returns a boolean value, i.e.,
-    // 0 for an unchecked box, and
-    // 1 for a checked box
+//   function generatePassword() 
+//   {
+//     // The following variables can access their respective HTML elements
+//     // The checked attribute returns a boolean value, i.e.,
+//     // 0 for an unchecked box, and
+//     // 1 for a checked box
 
-    let number = document.getElementById("numbers").checked;
-    let symbol = document.getElementById("symbols").checked;
-    let upper = document.getElementById("upperCase").checked;
-    let lower = document.getElementById("lowerCase").checked;
+//     let number = document.getElementById("numbers").checked;
+//     let symbol = document.getElementById("symbols").checked;
+//     let upper = document.getElementById("upperCase").checked;
+//     let lower = document.getElementById("lowerCase").checked;
 
-    // At least one box should be checked, 
-    // or else simply return the function by alerting the user.
+//     // At least one box should be checked, 
+//     // or else simply return the function by alerting the user.
 
-    if ( number + symbol + upper + lower === 0) {
-        alert("No box chosen. Please select at least one box!");
-        return;
-      }
+//     if ( number + symbol + upper + lower === 0) {
+//         alert("No box chosen. Please select at least one box!");
+//         return;
+//       }
 
-    // Accessing the password box
-    let pw_box = document.getElementById("pw-box");
+//     // Accessing the password box
+//     let pw_box = document.getElementById("pw-box");
 
-    // Access the set length for the password
-    let length = document.getElementById("length");
+//     // Access the set length for the password
+//     let length = document.getElementById("length");
 
-    let pw = ""; // the generated password variable
+//     let pw = ""; // the generated password variable
 
-    // The loop runs until password length matches the required length
-    while(pw.length < length.value)
-    {
+//     // The loop runs until password length matches the required length
+//     while(pw.length < length.value)
+//     {
         
-        let typeAdder = getType[Math.floor(Math.random() * getType.length)];
+//         let typeAdder = getType[Math.floor(Math.random() * getType.length)];
 
-        // The name attribute fetches the name of the <input> element
-        let isChecked = document.getElementById(typeAdder.name).checked;
+//         // The name attribute fetches the name of the <input> element
+//         let isChecked = document.getElementById(typeAdder.name).checked;
 
-        // The respect type should only be included in the password,
-        // if its checkbox is already checked by the user
-        if (isChecked) {
-            pw += typeAdder();
-        }
-    }
-    // pw_box.innerHTML = pw;
+//         // The respect type should only be included in the password,
+//         // if its checkbox is already checked by the user
+//         if (isChecked) {
+//             pw += typeAdder();
+//         }
+//     }
+//     pw_box.innerHTML = pw;
 
-    document.getElementById("pw-box").innerHTML = pw;
-  }
+
+//   }
+    // console.log(pw);  
+
+    // document.getElementById("pw-box").innerHTML = pw;
+
+  
 
 
 //   function copyPassword()

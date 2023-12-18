@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <div id="pw_box"></div>
+    <span id="passwordOutput"></span>
 
     <form action="#">
         <table> 
@@ -15,44 +15,44 @@
             
         <tr>
             <td>Password Length</td>
-            <td> <input type="number" name="" id="length"></td>
+            <td> <input type="number" name="" id="passwordLength"></td>
         </tr>
 
 
         <tr>
             <td>Contains Uppercase</td>
-            <td><input type="checkbox" name="" id="uppercase"></td>
+            <td><input type="checkbox" name="" id="includeUppercase"></td>
         </tr>
 
         <tr>
             <td>Contains Lowercase</td>
             <td>
-                <input type="checkbox" name="" id="lowercase">
+                <input type="checkbox" name="" id="includeLowercase">
             </td>
         </tr>
 
         <tr>
             <td>Contains Numbers</td>
-            <td><input type="checkbox" name="" id="numbers"></td>
+            <td><input type="checkbox" name="" id="includeNumbers"></td>
         </tr>
 
         <tr>
             <td>Contains Symbols</td>
-            <td><input type="checkbox" name="" id="symbols"></td>
+            <td><input type="checkbox" name="" id="includeSymbols"></td>
         </tr>
 
         <tr>
             <td>Contains Currency</td>
-            <td><input type="checkbox" name="" id=""></td>
+            <td><input type="checkbox" name="" id="includeCurrency"></td>
         </tr>
 
         <tr>
             <td></td>
-            <td><button>Generate</button></td>
+            <td><button onclick="generatePassword()">Generate</button></td>
         </tr>
 
         </table>
     </form>
-    
+    <script src="script.js"></script>
 </body>
 </html>

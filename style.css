@@ -22,9 +22,26 @@ table, tr, td{
     text-align: center;
 }
 table{
-
-    
+   
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+span{
+    display: inline-block;
+}
+#passwordOutput{
+
+    margin-left: 45%;
+    margin-top: 250px;
+    display: block;
+}
+#passwordOutput::after{
+
+    margin-left:45%;
+    margin-top: 250px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
